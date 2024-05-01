@@ -14,7 +14,7 @@ $Sessao = new Session;
     
         $Link = new Link;
         $Link->getTags();
-        var_dump($Link);
+       // var_dump($Link);
         
         ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

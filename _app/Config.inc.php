@@ -3,19 +3,19 @@
 //CONFIGURAÇÂO DO SITE ####################
 define('HOST', 'localhost');//Endereço do site
 define('USER', 'root');//Usuário do banco de dados
-define('PASS', 'root');//Senha do banco de dados
-define('DBSA', 'loteria');//Nome do Banco de Dados
+define('PASS', '');//Senha do banco de dados
+define('DBSA', 'sistema');//Nome do Banco de Dados
 
 //DEFINE IDENTIDADE DO SITE ###############
-define('SITENAME', 'loteria');//Nome do Site
+define('SITENAME', 'sistema');//Nome do Site
 define('SITEDESC', 'Colocar aqui a descrição sobre o site');//Breve descrição do site
 define('SITEFONE', '(00) 0000-0000');//Telefone informado no site
-define('SITESKYPE', 'loteriaonline');//Skype informado no site
-define('SITESLOGAN', 'Onde sorte é matemáticamente calculado!');//Skype informado no site
+define('SITESKYPE', 'sistemaonline');//Skype informado no site
+define('SITESLOGAN', 'Desenvolvendo!!!!');//SLOGAN do site
 
 //DEFINE A BASE DO SITE ####################
 define('HOME', 'localhost/padraophp');//Endereço base do site, colocar (Https://www.etc...)para evitar erros nas postagens
-define('TEMA', 'loteria');//Serve para especificar tema(pasta) pasta do index(2) do site
+define('TEMA', 'sistema');//Serve para especificar tema(pasta) pasta do index(2) do site
 define('INCLUDE_PATH', HOME . DIRECTORY_SEPARATOR . 'site' . DIRECTORY_SEPARATOR . TEMA);
 define('REQUIRE_PATH', 'site' . DIRECTORY_SEPARATOR . TEMA);
 
@@ -25,30 +25,24 @@ define('REQUIRE_PATH', 'site' . DIRECTORY_SEPARATOR . TEMA);
 
 //AUTO LOAD DE CLASSES ####################
 //Esta função recebe automáticamente o nome da classe e busca classe ao instanciar
-function My_autoloader($Class) {
+spl_autoload_register( function ($Class) {
     $cDir = ['Conn', 'Helpers', 'Models'];//Configuração de diretório, indica pastas a serem carregadas no autoload
     $iDir = null;//Serve para verificar se a inclusão de diretório ocorreu, se ocorreu seta true, caso não então retorna erro
-
+    
     foreach ($cDir as $dirName)://Percorrendo o array do cDir
-        $path = __DIR__ . DIRECTORY_SEPARATOR . $dirName . DIRECTORY_SEPARATOR .$Class .'.class.php';
+        $path = __DIR__ . DIRECTORY_SEPARATOR . $dirName . DIRECTORY_SEPARATOR . $Class .'.class.php';
+        
 
         if (!$iDir && file_exists($path) && !is_dir($path))://Verifica se arquivo existe e se não é um diretório
             include_once ($path);
-            $iDir = true;
-            
+            $iDir = true;        
         endif;
     endforeach;
     if (!$iDir)://Se não conseguiu incluir ai sim retorna o erro de inclusão
         trigger_error("Não foi possível incluir {$Class}.class.php", E_USER_ERROR);
     endif;
     
-}
-
-spl_autoload_register('My_autoloader');
-
-
-
-
+});
 
 
 
@@ -58,6 +52,11 @@ define('ZT_ACCEPT', 'alert-success');
 define('ZT_INFOR', 'alert-info');
 define('ZT_ALERT', 'alert-warning');
 define('ZT_ERROR', 'alert-danger');
+
+
+
+
+//PRECISA CORRIGIR ESTA PARTE DOS ERROS ESTÂO CONSIDERANDO TER BOOTSTRAP
 
 //ZTErro :: Exibe erros lançados :: Front do painel
 function ZTErro($ErrMsg, $ErrNo, $ErrDie = null){
