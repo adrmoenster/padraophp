@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Aqui é Header</h1>
-    
+    <h1>Aqui pagina de erro 404 do Admin</h1>
 </body>
 </html>

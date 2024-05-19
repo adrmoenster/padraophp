@@ -21,7 +21,7 @@ class Link {
     private $Dados;
 
     public function __construct() {
-        $this->Local = strip_tags(trim(filter_input(INPUT_GET, 'url', FILTER_DEFAULT)));
+        $this->Local = strip_tags(trim(filter_input(INPUT_GET, 'url', FILTER_DEFAULT)));//Precisa coorigir a partir versão 8 php(Deprecated)
         $this->Local = ($this->Local ? $this->Local : 'index');
         $this->Local = explode('/', $this->Local);
         $this->File = (isset($this->Local[0]) ? $this->Local[0] : 'index');   

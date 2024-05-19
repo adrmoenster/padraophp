@@ -84,16 +84,10 @@ require ('../_app/Config.inc.php');
 
                             <div class="clearfix"></div>
 
-                            <div class="separator">
-
-
-                                <div class="clearfix"></div>
+                            
                                 <br />
 
-                                <div>
-                                    <h1><i class="fa fa-deviantart"></i> Zater Sistemas</h1>
-                                    <p>©<?= date('Y'); ?> Todos os direitos reservados. Termos e contrato Registrados!</p>
-                                </div>
+                                
                             </div>
                         </form>
 

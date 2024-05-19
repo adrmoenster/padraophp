@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Aqui é Header</h1>
-    
+    <h1>Aqui o Sidebar do admin</h1>
 </body>
 </html>
