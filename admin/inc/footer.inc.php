@@ -71,7 +71,7 @@
                         <label class="rodape-titulo">Estado e Cidade</label>
                         <?php
                         $ReadEst = new Read;
-                        $ReadEst->ExeRead('estado', "WHERE estado_id != 'null' LIMIT 10");
+                        $ReadEst->ExeRead('estado', "WHERE estado_id != 'null' LIMIT 5");
                         
                         ?>
                         <select id="estado" onchange ="ListaEst">?>
@@ -81,18 +81,21 @@
                             <option value="<?= $Est['estado_codigouf'];?>" selected><?= $Est['estado_nome'];?></option>
                             <?php endforeach;?>
                         </select>
-                                   <?php
-                                    $ReadCid = new Read;
-                                    $ReadCid->ExeRead('cidade', "WHERE cidade_id != 'null' LIMIT 10");
-                                   ?>
-                                           <select id="estado" onchange="buscaCidades(this.value)">
-                                                <option value="">Selecione o Estado</option>
-                                                <option value="AC">Acre</option>
-                                                <option value="AL">Alagoas</option>
-                                            </select>
-                                            <br />
-                                            <select id="cidade">
-                                            </select>
+                        <?php
+                        $ReadCid = new Read;
+                        $ReadCid->ExeRead('cidade', "WHERE cidade_id != 'null' LIMIT 100");
+                        ?>
+                        <select id="cidade" onchange="buscaCidades(this.value)">
+                            <option value="">Selecione o Estado</option>
+                            <?php  foreach ($ReadCid->getResult() as $Cid) :
+                                ?>
+                            <option value="<?= $Cid['cidade_codigouf'];?>" selected><?= $Cid['cidade_nome'];?></option>
+                            <?php endforeach;?>
+                            
+                        </select>
+                            <br />
+                                <select id="cidade">
+                                </select>
                                 
                                 
                                             <?php
@@ -112,13 +115,7 @@
                             
 
                         
-                        ?>
-                                
-
-                            
-                            
-                               
-                               
+                        ?>         
                     </ul>
                 </div>
 
